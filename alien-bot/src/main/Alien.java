@@ -3,6 +3,7 @@ package main;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.regex.Pattern;
 
 public class Alien {
 	
@@ -20,21 +21,29 @@ public class Alien {
 	
 	/*
 	 * This is where we can set specific phrases and various options to vary the conversations.
-	 * note: This requires 1-to-1 input (not robust)
+	 * Keys should contain keywords in lowercase
 	 */
 	public void setPhrases() {
 		String[] planets = {"I come from Mars",
 				 "I come from what you call E131a-3H",
 				 "My home is called Venus"};
 		
-		phrases.put("What planet are you from?", planets);
+		phrases.put(".*planet.*", planets);
 	}
 	/*
 	 * Returns random phrase from a Key string
 	 */
 	public String getPhrases(String in){
 		Random rand = new Random();
-		return phrases.get(in)[rand.nextInt(3)];
+		//String pattern = ".*planet.*";
+		String ans = "What are you talking about human?";
+		for(String s : phrases.keySet()) {
+			if(Pattern.matches(s, in)) {
+				ans = phrases.get(s)[rand.nextInt(3)];
+				break;
+			}
+		}
+		return ans;
 	}
 	
 	public String getName() {
@@ -61,17 +70,20 @@ public class Alien {
 	public String parse(String input) {
 		/*
 		 * Greeting and Name are explicit
+		 * We can keep this as is and use as "limitations" as the project wants or make it more robust - Q
 		 */
+		String handler = input.toLowerCase();
 		if(!hasHumName) {
-			if(input.toLowerCase().contentEquals("hello") || input.toLowerCase().contentEquals("hi")) {
+			if(handler.contentEquals("hello") || handler.contentEquals("hi")) {
 				return "Hello Human, what is your name?";
 			}
 			else {
+				//Keep capitalization
 				setHumanName(input);
 				return "Hi " + humanName;
 			}
 		}
-		if(!askedName && input.toLowerCase().contains("name?")) {
+		if(!askedName && ( handler.contains("name?") || handler.contains("name"))) {
 			wasAskedName();
 			return "My name is " + name;
 		}
@@ -79,12 +91,7 @@ public class Alien {
 		 * Go to various phrases
 		 */
 		else {
-			try{
-				return getPhrases(input);
-				}
-			catch(Exception ex) {
-				return "I don't understand that language";
-			}
+			return getPhrases(handler);
 		}
 	}
 }
