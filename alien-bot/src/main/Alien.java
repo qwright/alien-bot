@@ -26,7 +26,8 @@ public class Alien {
 	public void setPhrases() {
 		String[] planets = {"I come from Mars",
 				 "I come from what you call E131a-3H",
-				 "My home is called Venus"};
+				 "My home is called Venus"
+				 };
 		
 		phrases.put(".*planet.*", planets);
 	}
@@ -39,7 +40,7 @@ public class Alien {
 		String ans = "What are you talking about human?";
 		for(String s : phrases.keySet()) {
 			if(Pattern.matches(s, in)) {
-				ans = phrases.get(s)[rand.nextInt(3)];
+				ans = phrases.get(s)[rand.nextInt(phrases.get(s).length)]; //selects random answer from hashmap for any size of array
 				break;
 			}
 		}
