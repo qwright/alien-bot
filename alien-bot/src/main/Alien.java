@@ -12,6 +12,8 @@ public class Alien {
 	private String humanName = "Human";
 	private boolean hasHumName = false;
 	
+	Random rand = new Random();
+	
 	private Map <String, String[]> phrases = new HashMap<String, String[]>();
 	
 	public Alien(String name) {
@@ -35,6 +37,20 @@ public class Alien {
 				"Probing..."
 		};
 		phrases.put("testphrases", testPhrases);
+		
+		String[] food = {"I don't require sustinence",
+				"Cats, mostly",
+				"You look pretty good *licks mouth-appendage*"
+				};
+		phrases.put("food", food);
+		phrases.put("eat?", food);
+		
+		String[] objectives = {"I want to destroy Earth",
+				"Ask the CIA",
+				"Just here for a good time, not a long time <3",
+				"I wish to speak with the lizard people's leader Mark Zuckerberg"
+		};
+		phrases.put("here?", objectives);
 
 	}
 
@@ -45,7 +61,7 @@ public class Alien {
 	public String parse(String input) {
 		/*
 		 * Greeting and Name are explicit
-		 * We can keep this as is and use as "limitations" as the project wants or make it more robust - Q
+		 * Name is last word of input after greeting
 		 */
 		String handler = input.toLowerCase();
 		if(!hasHumName) {
@@ -54,7 +70,8 @@ public class Alien {
 			}
 			else {
 				//Keep capitalization
-				setHumanName(input);
+				String[] parse = input.split(" ");
+				setHumanName(parse[parse.length-1]);
 				return "Hi " + humanName;
 			}
 		}
@@ -72,7 +89,6 @@ public class Alien {
 	 * Output: Returns random phrase from a key string, else returns default answer
 	 */
 	public String getPhrases(String input){
-		Random rand = new Random();
 		String ans = "What are you talking about human?";
 
 		for(String s: input.split(" "))
