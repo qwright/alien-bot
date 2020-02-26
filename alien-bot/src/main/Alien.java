@@ -20,33 +20,54 @@ public class Alien {
 	}
 	
 	/*
-	 * This is where specific phrases and various options to vary the conversations are set.
-	 * Keys should contain keywords in lowercase.
+	 * This is where we can set specific phrases and various options to vary the conversations.
+	 * Keys should contain keywords in lowercase
 	 */
 	public void setPhrases() {
 		String[] planets = {"I come from Mars",
 				 "I come from what you call E131a-3H",
-				 "My home is called Venus"};
+				 "My home is called Venus"
+				 };
 		
 		phrases.put(".*planet.*", planets);
 	}
 	/*
 	 * Returns random phrase from a Key string
 	 */
-	public String getPhrases(String input){
+	public String getPhrases(String in){
 		Random rand = new Random();
 		//String pattern = ".*planet.*";
 		String ans = "What are you talking about human?";
-		
 		for(String s : phrases.keySet()) {
-			if(Pattern.matches(s, input)) {
-				ans = phrases.get(s)[rand.nextInt(3)];
+			if(Pattern.matches(s, in)) {
+				ans = phrases.get(s)[rand.nextInt(phrases.get(s).length)]; //selects random answer from hashmap for any size of array
 				break;
 			}
 		}
 		return ans;
 	}
-
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getHumanName() {
+		return "humanName";
+	}
+	
+	public void setHumanName(String name) {
+		this.humanName = name;
+		hasHumName = true;
+	}
+	
+	public void wasAskedName() {
+		this.askedName = true;
+	}
+	
+	public boolean getNameState() {
+		return askedName;
+	}
+	
 	public String parse(String input) {
 		/*
 		 * Greeting and Name are explicit
@@ -73,27 +94,5 @@ public class Alien {
 		else {
 			return getPhrases(handler);
 		}
-	}
-
-	// Helper methods
-	public String getName() {
-		return name;
-	}
-	
-	public String getHumanName() {
-		return "humanName";
-	}
-	
-	public void setHumanName(String name) {
-		this.humanName = name;
-		hasHumName = true;
-	}
-	
-	public void wasAskedName() {
-		this.askedName = true;
-	}
-	
-	public boolean getNameState() {
-		return askedName;
 	}
 }
