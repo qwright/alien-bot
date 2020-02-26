@@ -28,46 +28,20 @@ public class Alien {
 				 "I come from what you call E131a-3H",
 				 "My home is called Venus"
 				 };
-		
-		phrases.put(".*planet.*", planets);
+		phrases.put("planet", planets);
+
+		String[] testPhrases = {"UFO sounds intensifies",
+				"Abducting human",
+				"Probing..."
+		};
+		phrases.put("testphrases", testPhrases);
+
 	}
+
 	/*
-	 * Returns random phrase from a Key string
+	 * Input: User input
+	 * Output: Matching alien phrase
 	 */
-	public String getPhrases(String in){
-		Random rand = new Random();
-		//String pattern = ".*planet.*";
-		String ans = "What are you talking about human?";
-		for(String s : phrases.keySet()) {
-			if(Pattern.matches(s, in)) {
-				ans = phrases.get(s)[rand.nextInt(phrases.get(s).length)]; //selects random answer from hashmap for any size of array
-				break;
-			}
-		}
-		return ans;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public String getHumanName() {
-		return "humanName";
-	}
-	
-	public void setHumanName(String name) {
-		this.humanName = name;
-		hasHumName = true;
-	}
-	
-	public void wasAskedName() {
-		this.askedName = true;
-	}
-	
-	public boolean getNameState() {
-		return askedName;
-	}
-	
 	public String parse(String input) {
 		/*
 		 * Greeting and Name are explicit
@@ -88,11 +62,46 @@ public class Alien {
 			wasAskedName();
 			return "My name is " + name;
 		}
-		/*
-		 * Go to various phrases
-		 */
-		else {
+		// Go to various phrases
+		else
 			return getPhrases(handler);
-		}
 	}
+
+	/*
+	 * Input: Lowercase user input
+	 * Output: Returns random phrase from a key string, else returns default answer
+	 */
+	public String getPhrases(String input){
+		Random rand = new Random();
+		String ans = "What are you talking about human?";
+
+		for(String s: input.split(" "))
+			if(phrases.containsKey(s))
+				return phrases.get(s)[rand.nextInt(phrases.get(s).length)];
+
+		return ans;
+	}
+
+	// Helper methods
+	public String getName() {
+		return name;
+	}
+	
+	public String getHumanName() {
+		return "humanName";
+	}
+	
+	public void setHumanName(String name) {
+		this.humanName = name;
+		hasHumName = true;
+	}
+	
+	public void wasAskedName() {
+		this.askedName = true;
+	}
+	
+	public boolean getNameState() {
+		return askedName;
+	}
+
 }
