@@ -6,6 +6,7 @@ public class Chatroom {
 	public static void main(String[] args) {
 		Scanner userInput = new Scanner(System.in);
 		Alien al = new Alien("ET");
+		System.out.println("You are walking when suddenly a friendly green alien approaches you. Why don't you say hello?");
 		
 		while(true) {
 			// Reading input
