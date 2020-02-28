@@ -51,9 +51,17 @@ public class Alien {
 				"I wish to speak with the lizard people's leader Mark Zuckerberg"
 		};
 		phrases.put("here?", objectives);
-
-	}
-
+		
+		//This returns a set of keywords to prompt the user on what words to ask the alien
+		String[] keyWords = { "planet", 
+				"food",
+				"eat?",
+				"here?",
+				"testPhrases"
+		};
+		phrases.put("help", keyWords);	
+		}
+	
 	/*
 	 * Input: User input
 	 * Output: Matching alien phrase
@@ -89,11 +97,22 @@ public class Alien {
 	 * Output: Returns random phrase from a key string, else returns default answer
 	 */
 	public String getPhrases(String input){
-		String ans = "What are you talking about human?";
+		String ans = "What are you talking about human? Maybe you should ask for help.";
 
 		for(String s: input.split(" "))
-			if(phrases.containsKey(s))
+			 if(phrases.containsKey(s)) {
+				 if(s.equals("help")) {
+					StringBuilder sbHelp = new StringBuilder();
+					sbHelp.append("*Alien noises* Try saying:");
+					for (String i:phrases.get(s)) { 
+						sbHelp.append("\n" + i);
+					}
+					return sbHelp.toString();
+				 }
+				 else {
 				return phrases.get(s)[rand.nextInt(phrases.get(s).length)];
+				 }
+			}
 
 		return ans;
 	}
