@@ -1,5 +1,4 @@
 package main;
-import main.Alien;
 import java.util.Scanner;
 
 public class Chatroom {
