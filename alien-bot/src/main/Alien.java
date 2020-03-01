@@ -31,6 +31,7 @@ public class Alien {
 				 "My home is called Venus"
 				 };
 		phrases.put("planet", planets);
+		phrases.put("from?", planets);
 
 		String[] testPhrases = {"UFO sounds intensifies",
 				"Abducting human",
@@ -52,11 +53,19 @@ public class Alien {
 		};
 		phrases.put("here?", objectives);
 		
+		String[] well = {"I am tired. The days are much longer on earth.",
+				"I could use some of what you humans call... food.",
+				"I am missing my home planet."
+		};
+		phrases.put("doing?", well);
+		phrases.put("feeling?", well);
+		
 		//This returns a set of keywords to prompt the user on what words to ask the alien
 		String[] keyWords = { "planet", 
 				"food",
 				"eat?",
 				"here?",
+				"doing?",
 				"testPhrases"
 		};
 		phrases.put("help", keyWords);	
@@ -97,8 +106,8 @@ public class Alien {
 	 * Output: Returns random phrase from a key string, else returns default answer
 	 */
 	public String getPhrases(String input){
-		String ans = "What are you talking about human? Maybe you should ask for help.";
-
+		String ans = "What are you talking about earthling? Maybe you should ask for help.";
+		//This is a mechanism that returns key words to try when the user asks for help
 		for(String s: input.split(" "))
 			 if(phrases.containsKey(s)) {
 				 if(s.equals("help")) {
