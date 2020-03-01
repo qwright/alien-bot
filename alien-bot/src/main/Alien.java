@@ -66,6 +66,12 @@ public class Alien {
 		phrases.put("ship?", spaceship);
 		phrases.put("spaceship?", spaceship);
 		phrases.put("UFO", spaceship);
+		
+		String[] sports = {"I am not familiar with earthling sports. In my home planet we lift asteroids with our mouth appendages.",
+				"I am interested in the one you call 'croquet'."
+				
+		};
+		phrases.put("sports?", sports);
 		//This returns a set of keywords to prompt the user on what words to ask the alien
 		String[] keyWords = { "planet", 
 				"food",
@@ -73,6 +79,7 @@ public class Alien {
 				"here?",
 				"doing?",
 				"UFO",
+				"sports?",
 				"testPhrases"
 		};
 		phrases.put("help", keyWords);	
