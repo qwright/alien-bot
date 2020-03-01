@@ -31,6 +31,7 @@ public class Alien {
 				 "My home is called Venus"
 				 };
 		phrases.put("planet", planets);
+		phrases.put("planet?", planets);
 		phrases.put("from?", planets);
 
 		String[] testPhrases = {"UFO sounds intensifies",
@@ -60,12 +61,18 @@ public class Alien {
 		phrases.put("doing?", well);
 		phrases.put("feeling?", well);
 		
+		String[] spaceship = {"My spaceship is the fastest ship in my home planet. And it has heated seats!",
+		};
+		phrases.put("ship?", spaceship);
+		phrases.put("spaceship?", spaceship);
+		phrases.put("UFO", spaceship);
 		//This returns a set of keywords to prompt the user on what words to ask the alien
 		String[] keyWords = { "planet", 
 				"food",
 				"eat?",
 				"here?",
 				"doing?",
+				"UFO",
 				"testPhrases"
 		};
 		phrases.put("help", keyWords);	
