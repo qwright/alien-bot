@@ -80,7 +80,27 @@ public class Alien {
 		};
 		phrases.put("appearance", appearance);
 		phrases.put("look", appearance);
+		
+		String[] exit = {"Bye dull earth dweller.",
+				"Goodbye earthling.",
+				"Goodbye, all information from this conversation will be erased from your memory."
+		};
+		phrases.put("goodbye", exit);
+		phrases.put("bye", exit);
 
+		String[] earth = { "It is dull and everything is bland, I hate it here",
+				"It is 'cute', far less advanced than my home planet though", 
+				"The country Italy is nice"
+		};
+		phrases.put("earth?", earth);
+		
+		String[] language = { "I don't, I'm speaking my native tongue E*lW1*, it's just very similar", 
+				"We have to learn 250 languages in my home planet",
+				"I've adjusted your brain to translate my native tongue to your language"
+		};
+		phrases.put("understand", language);
+		phrases.put("English?", language);
+		
 		//This returns a set of keywords to prompt the user on what words to ask the alien
 		String[] keyWords = { "planet", 
 							  "food",
@@ -90,6 +110,8 @@ public class Alien {
 							  "UFO",
 							  "sports?",
 							  "appearance",
+				                          "earth?",
+				                          "English?",
 							  "testPhrases"
 		};
 		phrases.put("help", keyWords);	
