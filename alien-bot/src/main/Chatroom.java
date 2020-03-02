@@ -13,12 +13,14 @@ public class Chatroom {
 			// Reading input
 			System.out.print("> ");
 			String in = userInput.nextLine();
-
-			if(in.equalsIgnoreCase("bye") || in.equalsIgnoreCase("goodbye"))  // 'bye' or 'goodbye' is exit statement
+			String alias = al.getNameState() ? al.getName() : "Alien";
+			
+			if(in.toLowerCase().contains("bye") || in.toLowerCase().contains("goodbye"))  // 'bye' or 'goodbye' is exit statement
+			{
+				System.out.println(alias + ": " + al.parse(in));
 				break;
+			}
 			else {
-				String alias = al.getNameState() ? al.getName() : "Alien";
-
 				// Small wait to make it seem more realistic
 				try {
 					Thread.sleep(500);
