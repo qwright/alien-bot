@@ -42,41 +42,41 @@ public class Alien {
 		phrases.put("testphrases", testPhrases);
 
 		String[] food = {"I don't require sustinence.",
-						 "Cats, mostly.",
-						 "You look pretty good. *licks mouth-appendage*"
+				"Cats, mostly.",
+				"You look pretty good. *licks mouth-appendage*"
 				};
 		phrases.put("food", food);
 		phrases.put("eat?", food);
 
 		String[] objectives = {"I want to destroy Earth.",
-							   "Ask the CIA.",
-							   "Just here for a good time, not a long time <3.",
-							   "I wish to speak with the lizard people's leader Mark Zuckerberg."
+				"Ask the CIA.",
+				"Just here for a good time, not a long time <3.",
+				"I wish to speak with the lizard people's leader Mark Zuckerberg."
 		};
 		phrases.put("here?", objectives);
 		
 		String[] well = {"I am tired. The days are much longer on earth.",
-						 "I could use some of what you humans call... food.",
-						 "I am missing my home planet."
+				"I could use some of what you humans call... food.",
+				"I am missing my home planet."
 		};
 		phrases.put("doing?", well);
 		phrases.put("feeling?", well);
 		
 		String[] spaceship = {"My spaceship is the fastest ship in my home planet. And it has heated seats!",
-							  "This ship has done the Kessel Run in less than 10 parsecs!"
+				"This ship has done the Kessel Run in less than 10 parsecs!"
 		};
 		phrases.put("ship?", spaceship);
 		phrases.put("spaceship?", spaceship);
 		phrases.put("UFO", spaceship);
 		
 		String[] sports = {"I am not familiar with earthling sports. In my home planet we lift asteroids with our mouth appendages.",
-						   "I am interested in the one you call 'croquet'."
+				"I am interested in the one you call 'croquet'."
 		};
 		phrases.put("sports?", sports);
 
 		String[] appearance = {"I have 6 eyes.",
-						       "I have 8 arms.",
-							   "I don't have any teeth!"
+				"I have 8 arms.",
+				"I don't have any teeth!"
 		};
 		phrases.put("appearance", appearance);
 		phrases.put("look", appearance);
@@ -103,16 +103,16 @@ public class Alien {
 		
 		//This returns a set of keywords to prompt the user on what words to ask the alien
 		String[] keyWords = { "planet", 
-							  "food",
-							  "eat?",
-							  "here?",
-							  "doing?",
-							  "UFO",
-							  "sports?",
-							  "appearance",
-				                          "earth?",
-				                          "English?",
-							  "testPhrases"
+				"food",
+				"eat?",
+				"here?",
+				"doing?",
+				"UFO",
+				"sports?",
+				"appearance",
+				"earth?",
+				"English?",
+				"testPhrases"
 		};
 		phrases.put("help", keyWords);	
 		}
