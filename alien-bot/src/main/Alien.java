@@ -11,76 +11,86 @@ public class Alien {
 	private boolean askedName = false;
 	private String humanName = "Human";
 	private boolean hasHumName = false;
-	
+
 	Random rand = new Random();
-	
+
+	// A hashmap is used for quick lookup of phrases and keywords
 	private Map <String, String[]> phrases = new HashMap<String, String[]>();
-	
+
 	public Alien(String name) {
 		this.name = name;
 		setPhrases();
 	}
-	
+
 	/*
 	 * This is where we can set specific phrases and various options to vary the conversations.
 	 * Keys should contain keywords in lowercase
 	 */
 	public void setPhrases() {
-		String[] planets = {"I come from Mars",
-				 "I come from what you call E131a-3H",
-				 "My home is called Venus"
+		String[] planets = {"I come from Mars.",
+							"I come from what you call E131a-3H.",
+				 			"My home is called Venus."
 				 };
 		phrases.put("planet", planets);
 		phrases.put("planet?", planets);
 		phrases.put("from?", planets);
 
-		String[] testPhrases = {"UFO sounds intensifies",
-				"Abducting human",
-				"Probing..."
+		String[] testPhrases = {"UFO sounds intensifies.",
+								"Abducting human.",
+								"Probing..."
 		};
 		phrases.put("testphrases", testPhrases);
-		
-		String[] food = {"I don't require sustinence",
-				"Cats, mostly",
-				"You look pretty good *licks mouth-appendage*"
+
+		String[] food = {"I don't require sustinence.",
+						 "Cats, mostly.",
+						 "You look pretty good. *licks mouth-appendage*"
 				};
 		phrases.put("food", food);
 		phrases.put("eat?", food);
-		
-		String[] objectives = {"I want to destroy Earth",
-				"Ask the CIA",
-				"Just here for a good time, not a long time <3",
-				"I wish to speak with the lizard people's leader Mark Zuckerberg"
+
+		String[] objectives = {"I want to destroy Earth.",
+							   "Ask the CIA.",
+							   "Just here for a good time, not a long time <3.",
+							   "I wish to speak with the lizard people's leader Mark Zuckerberg."
 		};
 		phrases.put("here?", objectives);
 		
 		String[] well = {"I am tired. The days are much longer on earth.",
-				"I could use some of what you humans call... food.",
-				"I am missing my home planet."
+						 "I could use some of what you humans call... food.",
+						 "I am missing my home planet."
 		};
 		phrases.put("doing?", well);
 		phrases.put("feeling?", well);
 		
 		String[] spaceship = {"My spaceship is the fastest ship in my home planet. And it has heated seats!",
+							  "This ship has done the Kessel Run in less than 10 parsecs!"
 		};
 		phrases.put("ship?", spaceship);
 		phrases.put("spaceship?", spaceship);
 		phrases.put("UFO", spaceship);
 		
 		String[] sports = {"I am not familiar with earthling sports. In my home planet we lift asteroids with our mouth appendages.",
-				"I am interested in the one you call 'croquet'."
-				
+						   "I am interested in the one you call 'croquet'."
 		};
 		phrases.put("sports?", sports);
+
+		String[] appearance = {"I have 6 eyes.",
+						       "I have 8 arms.",
+							   "I don't have any teeth!"
+		};
+		phrases.put("appearance", appearance);
+		phrases.put("look", appearance);
+
 		//This returns a set of keywords to prompt the user on what words to ask the alien
 		String[] keyWords = { "planet", 
-				"food",
-				"eat?",
-				"here?",
-				"doing?",
-				"UFO",
-				"sports?",
-				"testPhrases"
+							  "food",
+							  "eat?",
+							  "here?",
+							  "doing?",
+							  "UFO",
+							  "sports?",
+							  "appearance",
+							  "testPhrases"
 		};
 		phrases.put("help", keyWords);	
 		}
