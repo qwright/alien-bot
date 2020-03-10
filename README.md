@@ -1,5 +1,9 @@
 # alien-bot
-Project for COSC 310 
+Alien-bot is a project for COSC 310 where you can talk to a friendly alien named E.T.
+
+To begin talking, navigate to the src file and execute `java main.Chatroom`
+
+If you're nervous, type help to get a list of commands!
 
 ## Contributors
 Alex Green
@@ -17,5 +21,5 @@ Clone this respository
 #Class Structure
 .
 +-- Main
-|   +--Chatroom.java
-|   +--Alien.java
+|   +--Chatroom
+|   +--Alien
