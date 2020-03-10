@@ -78,7 +78,7 @@ public class Alien {
 		};
 		phrases.put("ship?", spaceship);
 		phrases.put("spaceship?", spaceship);
-		phrases.put("UFO", spaceship);
+		phrases.put("ufo", spaceship);
 		
 		String[] sports = {"I am not familiar with earthling sports. In my home planet we lift asteroids with our mouth appendages.",
 				"I am interested in the one you call 'croquet'."
@@ -110,7 +110,7 @@ public class Alien {
 				"I've adjusted your brain to translate my native tongue to your language"
 		};
 		phrases.put("understand", language);
-		phrases.put("English?", language);
+		phrases.put("english?", language);
 		
 		
 		//This returns a set of keywords to prompt the user on what words to ask the alien
