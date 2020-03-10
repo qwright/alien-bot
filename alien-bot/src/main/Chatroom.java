@@ -1,6 +1,10 @@
 package main;
 import java.util.Scanner;
 
+/*
+ * Main entry point for the user. Main loop and parsing occurs here
+ */
+
 public class Chatroom {
 	
 	public static void main(String[] args) {

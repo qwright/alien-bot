@@ -5,6 +5,10 @@ import java.util.Map;
 import java.util.Random;
 import java.util.regex.Pattern;
 
+/*
+ * Alien Class takes user inputs and gives outputs to the chatroom using very basic pattern matching.
+ */
+
 public class Alien {
 	
 	private String name = "Alien";
