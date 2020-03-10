@@ -19,7 +19,9 @@ Clone this respository
 `git clone https://github.com/qfwright/alien-bot.git`
 
 #Class Structure
+```
 .
 +-- Main
 |   +--Chatroom
 |   +--Alien
+```
