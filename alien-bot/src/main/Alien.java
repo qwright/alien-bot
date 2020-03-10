@@ -47,6 +47,13 @@ public class Alien {
 				};
 		phrases.put("food", food);
 		phrases.put("eat?", food);
+		
+		String[] drink = {"I only drink water - 8 glasses a day!"};
+		phrases.put("drink?", drink);
+		
+		String[] politics = {"We are a serfdom"};
+		phrases.put("politics", politics);
+		phrases.put("society", politics);
 
 		String[] objectives = {"I want to destroy Earth.",
 				"Ask the CIA.",
@@ -101,10 +108,12 @@ public class Alien {
 		phrases.put("understand", language);
 		phrases.put("English?", language);
 		
+		
 		//This returns a set of keywords to prompt the user on what words to ask the alien
 		String[] keyWords = { "planet", 
 				"food",
 				"eat?",
+				"drink?",
 				"here?",
 				"doing?",
 				"UFO",
@@ -112,6 +121,8 @@ public class Alien {
 				"appearance",
 				"earth?",
 				"English?",
+				"politics",
+				"society",
 				"testPhrases"
 		};
 		phrases.put("help", keyWords);	
