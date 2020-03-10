@@ -3,7 +3,6 @@ package main;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.regex.Pattern;
 
 /*
  * Alien Class takes user inputs and gives outputs to the chatroom using very basic pattern matching.
@@ -130,7 +129,7 @@ public class Alien {
 				"testPhrases"
 		};
 		phrases.put("help", keyWords);	
-		}
+	}
 	
 	/*
 	 * Input: User input
@@ -168,19 +167,27 @@ public class Alien {
 	 */
 	public String getPhrases(String input){
 		String ans = "What are you talking about earthling? Maybe you should ask for help.";
-		//This is a mechanism that returns key words to try when the user asks for help
+
+		// Search for phrases in the user input
 		for(String s: input.split(" "))
 			 if(phrases.containsKey(s)) {
+				 //This is a mechanism that returns key words to try when the user asks for help
 				 if(s.equals("help")) {
+
+				 	// Create a string of all 'help' phrases for the user
 					StringBuilder sbHelp = new StringBuilder();
 					sbHelp.append("*Alien noises* Try saying:");
-					for (String i:phrases.get(s)) { 
+
+					// Add all possible phrases
+					for (String i: phrases.get(s))
 						sbHelp.append("\n" + i);
-					}
+
 					return sbHelp.toString();
 				 }
+
+				 // If not help and a matching key phrase, return first possible response
 				 else {
-				return phrases.get(s)[rand.nextInt(phrases.get(s).length)];
+				 	return phrases.get(s)[rand.nextInt(phrases.get(s).length)];
 				 }
 			}
 

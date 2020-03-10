@@ -24,13 +24,13 @@ public class Chatroom {
 				break;
 			}
 			else {
-				// Small wait to make it seem more realistic
 				try {
-					Thread.sleep(500);
+					Thread.sleep(500); 				// Small wait to make it seem more realistic
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 
+				// Send user input to string parser
 				System.out.println(alias + ": " + al.parse(in));
 			}
 		}
