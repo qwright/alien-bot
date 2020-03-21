@@ -22,6 +22,7 @@ public class Chatroom extends Application {
 	Label alienMsg, humanMsg;
 	private Alien al;
 	private String alias;
+	private String humanName;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -47,6 +48,7 @@ public class Chatroom extends Application {
 		//Initialize alien
 		al = new Alien("ET");
 		alias = al.getNameState() ? al.getName() : "Alien";
+		humanName = al.getHumanName();
 
 		window = primaryStage;
 		// Set title of window
@@ -98,7 +100,7 @@ public class Chatroom extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				if (event.getSource() == button) {
-					humanMsg.setText(input.getText());
+					humanMsg.setText(humanName + ": " + input.getText());
 					alienMsg.setText(alias + ": " + al.parse(input.getText()));
 				}
 			}
