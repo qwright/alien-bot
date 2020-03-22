@@ -140,7 +140,7 @@ public class Chatroom extends Application {
 			}
 			GridPane.setConstraints(l, 20, height);
 			grid.getChildren().add(l);
-			height-=5;
+			height-=2;
 		}
 	}
 
