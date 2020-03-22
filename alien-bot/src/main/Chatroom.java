@@ -10,6 +10,7 @@ public class Chatroom {
 	public static void main(String[] args) {
 		Scanner userInput = new Scanner(System.in);
 		Alien al = new Alien("ET");
+		SentimentAnalyzer sen = new SentimentAnalyzer();
 		System.out.println("You are walking when suddenly a friendly green alien approaches you. Why don't you say hello?");
 		
 		while(true) {
@@ -31,7 +32,7 @@ public class Chatroom {
 					e.printStackTrace();
 				}
 
-				System.out.println(alias + ": " + al.parse(in));
+				System.out.println(alias + ": " + al.parse(in) + "[Sentiment="+sen.getSentiment(in) + "]");
 			}
 		}
 		userInput.close();
