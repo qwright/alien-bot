@@ -15,6 +15,7 @@ public class Alien {
 	private boolean askedName = false;
 	private String humanName = "Human";
 	private boolean hasHumName = false;
+	private SentimentAnalyzer sen = new SentimentAnalyzer();
 
 	Random rand = new Random();
 

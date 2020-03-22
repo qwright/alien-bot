@@ -13,11 +13,6 @@ import edu.stanford.nlp.util.TypesafeMap;
 
 public class SentimentAnalyzer {
 	
-	public SentimentAnalyzer()
-	{
-		
-	}
-	
 	/*
 	 * getSentiment returns -1 if neutral or error
 	 * else returns a scale of 0(negative) - 1 (positive)
