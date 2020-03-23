@@ -4,18 +4,21 @@ import main.Alien;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Chatroom extends Application {
 	Button send, clear;
@@ -31,11 +34,14 @@ public class Chatroom extends Application {
 	private GridPane grid;
 	RowConstraints textRow;
 	List<Label> labelList;
+	ScrollPane container;
+	VBox root, chat;
+	HBox inputArea;
+	int index;
 
 	public static void main(String[] args) {
 		launch(args);
 		//Scanner userInput = new Scanner(System.in);
-		clicked = 0;
 	}
 
 	@Override
@@ -44,72 +50,42 @@ public class Chatroom extends Application {
 		al = new Alien("ET");
 		alias = al.getNameState() ? al.getName() : "Alien";
 		humanName = al.getNameState() ? al.getHumanName() : "Human";
-		
-		labelList = new ArrayList();
-
+		//root holds scrollpane and hbox textarea
+		root = new VBox();
 		window = primaryStage;
-		// Set title of window
-		primaryStage.setTitle("Alien Bot!");
-
-		// Set up grid
-		grid = new GridPane();
-		// padding
-		grid.setPadding(new Insets(15, 15, 15, 15));
-		// vertical spacing
-		grid.setVgap(8);
-		// Horizontal spacing
-		grid.setHgap(5);
-
-		/*
-		 * Form
-		 * 
-		 */
-		TextField input = new TextField();
-		GridPane.setConstraints(input, 20, 55, 90, 1);
+		primaryStage.setTitle("Alien Bot");
+		chat = new VBox();
+		chat.setPrefSize(500, 600);
 		
-
-		// Initialize buttons
+		inputArea = new HBox();
+		container = new ScrollPane();
+		//labels are used to hold messages
+		labelList = new ArrayList<Label>();
+		//init label index
+		index = 0;
+		
+		TextField input = new TextField();
 		send = new Button();
 		send.setText("Send");
-		GridPane.setConstraints(send, 110, 55);
-		
-		clear = new Button();
-		clear.setText("Clear");
-		GridPane.setConstraints(clear, 111, 55);
-
-		
-		// Add the children to the window
-		grid.getChildren().addAll(input, send, clear);
-
-		
-		// create a scene and set size of window
-		Scene scene = new Scene(grid, 800, 600);
-		// Set the scene to the primary stage
+		//hbox for input
+		inputArea.getChildren().addAll(input, send);
+		//set vbox as scrollbox content
+		container.setContent(chat);
+		container.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
+		container.setHbarPolicy(ScrollBarPolicy.NEVER);
+		//
+		root.getChildren().addAll(container, inputArea);
+		Scene scene = new Scene(root, 500, 600);
 		primaryStage.setScene(scene);
-		// Display stage
 		primaryStage.show();
 		
-		textRow = new RowConstraints();
-
-		//Method called when user hits send button
 		send.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				
 				setLabels(input.getText());
-				updateGrid();
-				clicked ++;
-				if (clicked > 1) {
-					updateGrid();
-				}
-			}
-		});
-		
-		
-		//Method called when user hits clear button
-		clear.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				//clear text
+				updateChat();
+				input.clear();
 			}
 		});
 	}
@@ -120,20 +96,19 @@ public class Chatroom extends Application {
 		labelList.add(new Label(alias + ": " + al.parse(in)));
 	}
 	
-	public void updateGrid()
+	public void updateChat()
 	{
-		int height = LOWEST_LABEL_HEIGHT;
-		for(int n=labelList.size()-1; n>=0; n--) {
-			Label l = labelList.get(n);
-			//Remove the child
-			if(grid.getChildren().contains(l)) {
-				grid.getChildren().remove(l);
-			} 
-			
-			GridPane.setConstraints(l, 20, height, 90, 1);
-			grid.getChildren().add(l);
-			height-=1;
-		}
-	}
 
+			//human msg
+			labelList.get(index).setAlignment(Pos.CENTER_LEFT);
+			chat.getChildren().add(labelList.get(index));
+			index++;
+
+			//alien msg
+			labelList.get(index).setAlignment(Pos.CENTER_RIGHT);
+			chat.getChildren().add(labelList.get(index));
+			index++;
+			container.setVvalue(Double.MAX_VALUE);
+	}
+	
 }

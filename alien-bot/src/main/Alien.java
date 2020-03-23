@@ -125,9 +125,9 @@ public class Alien {
 			 if(phrases.containsKey(s)) {
 				 if(s.equals("help")) {
 					StringBuilder sbHelp = new StringBuilder();
-					sbHelp.append("*Alien noises* Try saying:");
+					sbHelp.append("*Alien noises* Try saying ");
 					for (String i:phrases.get(s)) { 
-						sbHelp.append("\n" + i);
+						sbHelp.append(i + ", ");
 					}
 					return sbHelp.toString();
 				 }
