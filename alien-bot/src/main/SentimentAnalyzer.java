@@ -1,6 +1,7 @@
 package main;
 
 import java.util.Properties;
+import edu.stanford.nlp.pipeline.*;
 
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.neural.rnn.RNNCoreAnnotations;
