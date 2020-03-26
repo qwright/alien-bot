@@ -81,7 +81,7 @@ public class Alien {
 		phrases.put("ufo", spaceship);
 		
 		String[] sports = {"I am not familiar with earthling sports. In my home planet we lift asteroids with our mouth appendages.",
-				"I am interested in the one you call 'croquet'."
+				"I am interested in the one you call 'croquet'."	
 		};
 		phrases.put("sports?", sports);
 
@@ -182,7 +182,6 @@ public class Alien {
 					// Add all possible phrases
 					for (String i: phrases.get(s))
 						sbHelp.append("\n" + i);
-
 					return sbHelp.toString();
 				 }
 
