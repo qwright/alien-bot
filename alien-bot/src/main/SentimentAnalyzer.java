@@ -19,7 +19,7 @@ public class SentimentAnalyzer {
 	 * else returns a scale of 0(negative) - 1 (positive)
 	 */
 	
-	public int getSentiment(String input) {
+	public static int getSentiment(String input) {
 		 
         Properties props = new Properties();
         props.setProperty("annotators", "tokenize, ssplit, parse, sentiment");

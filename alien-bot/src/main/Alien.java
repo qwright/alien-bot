@@ -14,7 +14,7 @@ public class Alien {
 	private boolean askedName = false;
 	private String humanName = "Human";
 	private boolean hasHumName = false;
-	private SentimentAnalyzer sen = new SentimentAnalyzer();
+	private int sentiment = -1;
 
 	Random rand = new Random();
 
@@ -141,6 +141,7 @@ public class Alien {
 		 * Greeting and Name are explicit
 		 * Name is last word of input after greeting
 		 */
+		sentiment = SentimentAnalyzer.getSentiment(input);
 		String handler = input.toLowerCase();
 		if(!hasHumName) {
 			if(handler.contentEquals("hello") || handler.contentEquals("hi")) {
@@ -214,6 +215,11 @@ public class Alien {
 	
 	public boolean getNameState() {
 		return askedName;
+	}
+	
+	public int getSentiment()
+	{
+		return sentiment;
 	}
 
 }

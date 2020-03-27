@@ -16,37 +16,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="target/stanford-corenlp-3.9.2.jar"/>
-	<classpathentry kind="lib" path="target/stanford-corenlp-models-current.jar"/>
-	<classpathentry kind="lib" path="target/stanford-english-corenlp-models-current.jar"/>
-	<classpathentry kind="lib" path="target/stanford-english-kbp-corenlp-models-current.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/ant-contrib-1.0b3.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/appbundler-1.0.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/AppleJavaExtensions.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/commons-lang3-3.1.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/commons-logging.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/ejml-core-0.38.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/ejml-ddense-0.38.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/ejml-simple-0.38.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/javacc.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/javax.activation-api-1.2.0.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/javax.json.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/javax.servlet.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/jaxb-api-2.4.0-b180830.0359.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/jaxb-core-2.3.0.1.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/jaxb-impl-2.4.0-b180830.0438.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/jflex-1.6.1.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/joda-time.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/jollyday-0.4.9.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/junit.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/log4j-1.2.16.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/lucene-analyzers-common-7.5.0.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/lucene-core-7.5.0.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/lucene-demo-7.5.0.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/lucene-queryparser-7.5.0.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/protobuf.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/slf4j-api.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/slf4j-simple.jar"/>
-	<classpathentry kind="lib" path="/home/quinn/Documents/COSC 310 - Soft Eng/alien-bot/alien-bot/target/xom-1.3.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

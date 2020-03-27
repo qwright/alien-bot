@@ -156,7 +156,6 @@ public class Chatroom extends Application {
 		}else {
 			//alien msg
 			current = labelList.get(index);
-			getAlienSentiment(current.getText());
 			current.getText();
 			labelList.get(index).setAlignment(Pos.CENTER_RIGHT);
 			chat.getChildren().add(labelList.get(index));
@@ -167,8 +166,24 @@ public class Chatroom extends Application {
 
 	}
 
-	private void getAlienSentiment(String text) {
-		//Sentiment analysis here, updates image
+	public void getAlienSentiment() {
+		switch(al.getSentiment()){
+		case -1:
+			imageView.setImage(alienNeutral);
+			break;
+		case 0:
+			imageView.setImage(alienAngry);
+			break;
+		case 1:
+			imageView.setImage(alienDis);
+			break;
+		case 3:
+			imageView.setImage(alienSmile);
+			break;
+		case 4:
+			imageView.setImage(alienHappy);
+			break;
+		}
 	}
 
 	public void loadImages()
