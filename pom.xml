@@ -58,5 +58,11 @@
         <version>3.9.2</version>
         <classifier>models-english-kbp</classifier>
     </dependency>
+	  <dependency>
+    <groupId>org.rednoise</groupId>
+	<artifactId>rita</artifactId>
+	<version>1.0.92-SNAPSHOT</version>
+	<packaging>jar</packaging>
+    </dependency>
     </dependencies>
 </project>
