@@ -48,6 +48,10 @@ public class POSTagging extends Chatroom {
 			correction = arr[0].concat("ing ");
 			myString = correction + theRest;
 		}
+		if(s[s.length-1].equals("vbp") && t[0].equals("vbn"))
+		{
+			myString = "am " + myString;
+		}
 		return myString;
 	}
 }
