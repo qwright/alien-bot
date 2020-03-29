@@ -38,13 +38,13 @@ public class Chatroom extends Application {
 	Stage window;
 	Scene scene;
 	TextField input;
-	private Alien al;
-	private String alias;
+	protected static Alien al;
+	protected static String alias;
 	private String humanName;
 	static int clicked;
 	RowConstraints textRow;
 	Label current;
-	List<Label> labelList;
+	static List<Label> labelList;
 	ScrollPane container;
 	VBox root, chat;
 	HBox inputArea;
@@ -143,7 +143,8 @@ public class Chatroom extends Application {
 	public void setLabels(String in)
 	{
 		labelList.add(new Label(humanName + ": " + in));
-		labelList.add(new Label(alias + ": " + al.parse(in)));
+		//Prints out message and corrects verbs if needed
+		POSTagging.verb(in);
 	}
 
 	public void updateChat()
