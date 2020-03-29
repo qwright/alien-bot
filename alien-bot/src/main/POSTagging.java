@@ -1,6 +1,5 @@
 package main;
 import javafx.scene.control.Label;
-import main.Chatroom;
 import rita.*;
 /*
  * This class recognizes verbs based on PENN part-of-speech tags
