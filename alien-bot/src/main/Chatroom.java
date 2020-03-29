@@ -143,7 +143,7 @@ public class Chatroom extends Application {
 	public void setLabels(String in)
 	{
 		labelList.add(new Label(humanName + ": " + in));
-		//Prints out message and corrects verbs if needed
+		//Prints out message and corrects verbs when needed
 		POSTagging.verb(in);
 	}
 
