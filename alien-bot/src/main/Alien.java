@@ -50,81 +50,80 @@ public class Alien {
 				"You look pretty good. *licks mouth-appendage*"
 				};
 		phrases.put("food", food);
-		phrases.put("eat?", food);
+		phrases.put("eat", food);
 		
 		String[] drink = {"I only drink water - 8 glasses a day!"};
-		phrases.put("drink?", drink);
+		phrases.put("drink", drink);
 		
 		String[] politics = {"We are a serfdom"};
-		phrases.put("politics", politics);
-		phrases.put("society", politics);
+		phrases.put("polit", politics);
+		phrases.put("societi", politics);
 
 		String[] objectives = {"I want to destroy Earth.",
 				"Ask the CIA.",
 				"Just here for a good time, not a long time <3.",
 				"I wish to speak with the lizard people's leader Mark Zuckerberg."
 		};
-		phrases.put("here?", objectives);
+		phrases.put("here", objectives);
 		
 		String[] well = {"I am tired. The days are much longer on earth.",
 				"I could use some of what you humans call... food.",
 				"I am missing my home planet."
 		};
-		phrases.put("doing?", well);
-		phrases.put("feeling?", well);
+		phrases.put("feel", well);
 		
 		String[] spaceship = {"My spaceship is the fastest ship in my home planet. And it has heated seats!",
 				"This ship has done the Kessel Run in less than 10 parsecs!"
 		};
-		phrases.put("ship?", spaceship);
-		phrases.put("spaceship?", spaceship);
+		phrases.put("ship", spaceship);
+		phrases.put("spaceship", spaceship);
 		phrases.put("ufo", spaceship);
 		
 		String[] sports = {"I am not familiar with earthling sports. In my home planet we lift asteroids with our mouth appendages.",
 				"I am interested in the one you call 'croquet'."	
 		};
-		phrases.put("sports?", sports);
+		phrases.put("sport", sports);
 
 		String[] appearance = {"I have 6 eyes.",
 				"I have 8 arms.",
 				"I don't have any teeth!"
 		};
-		phrases.put("appearance", appearance);
+		phrases.put("appear", appearance);
 		phrases.put("look", appearance);
 		
 		String[] exit = {"Bye dull earth dweller.",
 				"Goodbye earthling.",
 				"Goodbye, all information from this conversation will be erased from your memory."
 		};
-		phrases.put("goodbye", exit);
+		phrases.put("goodby", exit);
 		phrases.put("bye", exit);
 
 		String[] earth = { "It is dull and everything is bland, I hate it here",
 				"It is 'cute', far less advanced than my home planet though", 
 				"The country Italy is nice"
 		};
-		phrases.put("earth?", earth);
+		phrases.put("earth", earth);
 		
 		String[] language = { "I don't, I'm speaking my native tongue E*lW1*, it's just very similar", 
 				"We have to learn 250 languages in my home planet",
 				"I've adjusted your brain to translate my native tongue to your language"
 		};
 		phrases.put("understand", language);
-		phrases.put("english?", language);
+		phrases.put("english", language);
 		
 		
 		//This returns a set of keywords to prompt the user on what words to ask the alien
 		String[] keyWords = { "planet", 
 				"food",
-				"eat?",
-				"drink?",
-				"here?",
-				"doing?",
+				"eat",
+				"drink",
+				"here",
+				"feel",
 				"UFO",
-				"sports?",
+				"sports",
 				"appearance",
-				"earth?",
-				"English?",
+				"earth",
+				"English",
 				"politics",
 				"society",
 				"testPhrases"
@@ -168,30 +167,35 @@ public class Alien {
 	 * Output: Returns random phrase from a key string, else returns default answer
 	 */
 	public String getPhrases(String input){
+		Stemmer stemmer = new Stemmer();
+
 		String ans = "What are you talking about earthling? Maybe you should ask for help.";
 
 		// Search for phrases in the user input
-		for(String s: input.split(" "))
-			 if(phrases.containsKey(s)) {
-				 //This is a mechanism that returns key words to try when the user asks for help
-				 if(s.equals("help")) {
+		for(String s: input.split(" ")) {
+			s = stemmer.run(s);  // stem the word
 
-				 	// Create a string of all 'help' phrases for the user
+			if (phrases.containsKey(s)) {
+				//This is a mechanism that returns key words to try when the user asks for help
+				if (s.equals("help")) {
+
+					// Create a string of all 'help' phrases for the user
 					StringBuilder sbHelp = new StringBuilder();
 					sbHelp.append("*Alien noises* Try saying:");
 
 					// Add all possible phrases
-					for (String i: phrases.get(s))
+					for (String i : phrases.get(s))
 						sbHelp.append("\n" + i);
 					return sbHelp.toString();
-				 }
+				}
 
-				 // If not help and a matching key phrase, return first possible response
-				 else {
-				 	return phrases.get(s)[rand.nextInt(phrases.get(s).length)];
-				 }
+				// If not help and a matching key phrase, return first possible response
+				else {
+					return phrases.get(s)[rand.nextInt(phrases.get(s).length)];
+				}
 			}
 
+		}
 		return ans;
 	}
 
