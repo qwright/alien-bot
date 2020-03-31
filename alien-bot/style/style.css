@@ -1,0 +1,37 @@
+.button{
+	-fx-background-color:purple;
+	-fx-padding-left:30;
+	-fx-padding-right:30;
+	-fx-font-size: 16;
+	-fx-text-fill:white;
+	
+}
+
+.input{
+	-fx-background-color:white;
+	-fx-width:100;
+	-fx-font-size: 14;
+	-fx-text-fill:purple;
+}
+.root{
+	-fx-background-color:#0e052e;
+}
+
+.vbox{
+	-fx-background-color:#ece8fe;
+}
+.alientext{
+	-fx-padding:10;
+	-fx-background-radius:12 12 12 12;
+	-fx-font-size:16;
+	-fx-text-fill:white;
+	-fx-background-color:purple;
+}
+.humantext{
+	-fx-padding:10;
+	-fx-font-size:16;
+	-fx-text-fill:white;
+	-fx-background-radius:12 12 12 12;
+	-fx-background-color:#0e052e;
+	
+}

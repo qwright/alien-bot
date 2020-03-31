@@ -15,6 +15,7 @@ public class Alien {
 	private String humanName = "Human";
 	private boolean hasHumName = false;
 	private int sentiment = -1;
+	private String response = "";
 
 	Random rand = new Random();
 
@@ -41,7 +42,8 @@ public class Alien {
 
 		String[] testPhrases = {"UFO sounds intensifies.",
 								"Abducting human.",
-								"Probing..."
+								"Probing...",
+								"I think you are cute"
 		};
 		phrases.put("testphrases", testPhrases);
 
@@ -141,7 +143,6 @@ public class Alien {
 		 * Greeting and Name are explicit
 		 * Name is last word of input after greeting
 		 */
-		sentiment = SentimentAnalyzer.getSentiment(input);
 		String handler = input.toLowerCase();
 		if(!hasHumName) {
 			if(handler.contentEquals("hello") || handler.contentEquals("hi")) {
@@ -151,7 +152,7 @@ public class Alien {
 				//Keep capitalization
 				String[] parse = input.split(" ");
 				setHumanName(parse[parse.length-1]);
-				return "Hi " + humanName;
+				return "It is lovely to meet you, " + humanName;
 			}
 		}
 		if(!askedName && ( handler.contains("name?") || handler.contains("name"))) {
@@ -191,7 +192,7 @@ public class Alien {
 				 	return phrases.get(s)[rand.nextInt(phrases.get(s).length)];
 				 }
 			}
-
+		this.response = ans;
 		return ans;
 	}
 
@@ -219,6 +220,7 @@ public class Alien {
 	
 	public int getSentiment()
 	{
+		sentiment = SentimentAnalyzer.getSentiment(response);
 		return sentiment;
 	}
 
