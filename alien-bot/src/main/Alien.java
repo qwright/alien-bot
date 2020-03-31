@@ -9,12 +9,13 @@ import java.util.Random;
  */
 
 public class Alien {
-	
+
 	private String name = "Alien";
 	private boolean askedName = false;
 	private String humanName = "Human";
 	private boolean hasHumName = false;
 	private int sentiment = -1;
+	private String response = "";
 
 	Random rand = new Random();
 
@@ -32,30 +33,31 @@ public class Alien {
 	 */
 	public void setPhrases() {
 		String[] planets = {"I come from Mars.",
-							"I come from what you call E131a-3H.",
-				 			"My home is called Venus."
-				 };
+				"I come from what you call E131a-3H.",
+				"My home is called Venus."
+		};
 		phrases.put("planet", planets);
 		phrases.put("planet?", planets);
 		phrases.put("from?", planets);
 
 		String[] testPhrases = {"UFO sounds intensifies.",
-								"Abducting human.",
-								"Probing..."
+				"Abducting human.",
+				"Probing...",
+				"I think you are cute"
 		};
 		phrases.put("testphrases", testPhrases);
 
 		String[] food = {"don't require sustinence.",
 				"eat cats, mostly.",
 				"think you look pretty good. *licks mouth-appendage*"
-				};
+		};
 		phrases.put("food", food);
 		phrases.put("eat", food);
-		
+
 		String[] drink = {"drink only water - 8 glasses a day!"};
 		phrases.put("drink", drink);
 
-		
+
 		String[] politics = {"We are a serfdom"};
 		phrases.put("polit", politics);
 		phrases.put("societi", politics);
@@ -66,20 +68,20 @@ public class Alien {
 				"I wish to speak with the lizard people's leader Mark Zuckerberg."
 		};
 		phrases.put("here", objectives);
-		
+
 		String[] well = {"tired. The days are much longer on earth.",
 				"starved. I could use some of what you humans call... food.",
 				"missing my home planet."
 		};
 		phrases.put("feel", well);
-		
+
 		String[] spaceship = {"My spaceship is the fastest ship in my home planet. And it has heated seats!",
 				"This ship has done the Kessel Run in less than 10 parsecs!"
 		};
 		phrases.put("ship", spaceship);
 		phrases.put("spaceship", spaceship);
 		phrases.put("ufo", spaceship);
-		
+
 		String[] sports = {"I am not familiar with earthling sports. In my home planet we lift asteroids with our mouth appendages.",
 				"I am interested in the one you call 'croquet'."	
 		};
@@ -91,7 +93,7 @@ public class Alien {
 		};
 		phrases.put("appear", appearance);
 		phrases.put("look", appearance);
-		
+
 		String[] exit = {"Bye dull earth dweller.",
 				"Goodbye earthling.",
 				"Goodbye, all information from this conversation will be erased from your memory."
@@ -104,15 +106,15 @@ public class Alien {
 				"The country Italy is nice"
 		};
 		phrases.put("earth", earth);
-		
+
 		String[] language = { "I don't, I'm speaking my native tongue E*lW1*, it's just very similar", 
 				"We have to learn 250 languages in my home planet",
 				"I've adjusted your brain to translate my native tongue to your language"
 		};
 		phrases.put("understand", language);
 		phrases.put("english", language);
-		
-		
+
+
 		//This returns a set of keywords to prompt the user on what words to ask the alien
 		String[] keyWords = { "planet", 
 				"food",
@@ -131,7 +133,7 @@ public class Alien {
 		};
 		phrases.put("help", keyWords);	
 	}
-	
+
 	/*
 	 * Input: User input
 	 * Output: Matching alien phrase
@@ -141,7 +143,6 @@ public class Alien {
 		 * Greeting and Name are explicit
 		 * Name is last word of input after greeting
 		 */
-		sentiment = SentimentAnalyzer.getSentiment(input);
 		String handler = input.toLowerCase();
 		if(!hasHumName) {
 			if(handler.contentEquals("hello") || handler.contentEquals("hi")) {
@@ -151,7 +152,7 @@ public class Alien {
 				//Keep capitalization
 				String[] parse = input.split(" ");
 				setHumanName(parse[parse.length-1]);
-				return "Hi " + humanName;
+				return "It is lovely to meet you, " + humanName;
 			}
 		}
 		if(!askedName && ( handler.contains("name?") || handler.contains("name"))) {
@@ -197,6 +198,7 @@ public class Alien {
 			}
 
 		}
+		this.response = ans;
 		return ans;
 	}
 
@@ -204,26 +206,27 @@ public class Alien {
 	public String getName() {
 		return name;
 	}
-	
+
 	public String getHumanName() {
 		return "humanName";
 	}
-	
+
 	public void setHumanName(String name) {
 		this.humanName = name;
 		hasHumName = true;
 	}
-	
+
 	public void wasAskedName() {
 		this.askedName = true;
 	}
-	
+
 	public boolean getNameState() {
 		return askedName;
 	}
-	
+
 	public int getSentiment()
 	{
+		sentiment = SentimentAnalyzer.getSentiment(response);
 		return sentiment;
 	}
 

@@ -12,6 +12,7 @@ import javafx.event.Event;
 import javafx.event.EventDispatchChain;
 import javafx.event.EventDispatcher;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,6 +29,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +51,9 @@ public class Chatroom extends Application {
 	ScrollPane container;
 	VBox root, chat;
 	HBox inputArea;
-	Image alienHappy, alienDis, alienAngry, alienSmile, alienNeutral;
+	Image alienHappy, alienDis, alienAngry, alienSmile, alienNeutral, alienThinking;
 	ImageView imageView;
+	File f = new File("style/style.css");
 
 	int index;
 
@@ -59,6 +63,7 @@ public class Chatroom extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+
 		// Initialize alien
 		al = new Alien("ET");
 		alias = al.getNameState() ? al.getName() : "Alien";
@@ -68,25 +73,41 @@ public class Chatroom extends Application {
 		window = primaryStage;
 		primaryStage.setTitle("Alien Bot");
 		chat = new VBox();
-		chat.setPrefSize(500, 600);
+		chat.getStyleClass().add("vbox");
+		chat.setPrefSize(800, 500);
 		//chat.setAlignment(BOTTOM);
+		
+		//Import Style Sheet
+		root.getStylesheets().clear();
+		root.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
+		
 
 		loadImages();
 		imageView = new ImageView(alienNeutral);
 		imageView.setFitHeight(100); 
 		imageView.setFitWidth(100); 
 
-
+		
+		
 		inputArea = new HBox();
+		inputArea.setSpacing(10.0);
+		
 		container = new ScrollPane();
+		container.autosize();
 		//labels are used to hold messages
 		labelList = new ArrayList<Label>();
 		//init label index
 		index = 0;
 
 		TextField input = new TextField();
+		input.getStyleClass().add("input");
+		HBox.setMargin(input, new Insets(35, 20, 20, 20));
+		input.setMinWidth(500);
+		input.setMaxWidth(500);
+		
 		send = new Button();
 		send.setText("Send");
+		HBox.setMargin(send, new Insets(30, 20, 20, 20));
 		//hbox for input
 		inputArea.getChildren().addAll(imageView, input, send);
 		//set vbox as scrollbox content
@@ -98,6 +119,13 @@ public class Chatroom extends Application {
 		Scene scene = new Scene(root, 800, 600);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+		chat.heightProperty().addListener(new ChangeListener<Object>() {
+			@Override
+			public void changed(ObservableValue<?> observable, Object oldvalue, Object newValue) {
+				container.setVvalue((Double)newValue);
+			}
+		});
 
 		send.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -120,7 +148,8 @@ public class Chatroom extends Application {
 						@Override
 						protected Void call() throws Exception{
 							try {
-								Thread.sleep(1000);
+								imageView.setImage(alienThinking);
+								Thread.sleep(2000);
 							}catch(InterruptedException e) {
 							}
 							return null;
@@ -130,6 +159,7 @@ public class Chatroom extends Application {
 					sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 						@Override
 						public void handle(WorkerStateEvent e) {
+							getAlienSentiment();
 							updateChat();
 						}
 					});
@@ -152,22 +182,28 @@ public class Chatroom extends Application {
 		if(index%2==0) {
 			//human msg
 			current = labelList.get(index);
+			current.getStyleClass().add("humantext");
+			chat.setMargin(current, new Insets(20, 0, 0, 120));
 			chat.getChildren().add(current);
 			index++;
 		}else {
 			//alien msg
 			current = labelList.get(index);
+			current.getStyleClass().add("alientext");
+			chat.setMargin(current, new Insets(20, 0, 0, 120));
 			current.getText();
 			labelList.get(index).setAlignment(Pos.CENTER_RIGHT);
 			chat.getChildren().add(labelList.get(index));
 			index++;
-			//This drops scrollbar
-			//container.setVvalue(Double.MAX_VALUE);
 		}
+		//This drops scrollbar
+		//container.setVvalue(1.0);
+		
 
 	}
 
 	public void getAlienSentiment() {
+		System.out.println(al.getSentiment());
 		switch(al.getSentiment()){
 		case -1:
 			imageView.setImage(alienNeutral);
@@ -195,6 +231,7 @@ public class Chatroom extends Application {
 			alienHappy = new Image(new FileInputStream("res/alien_veryhappy.png"));
 			alienDis = new Image(new FileInputStream("res/alien_annoyed.png"));
 			alienSmile = new Image(new FileInputStream("res/alien_happy.png"));
+			alienThinking = new Image(new FileInputStream("res/alien_thinking.png"));
 
 		}
 		catch (Exception e) {
