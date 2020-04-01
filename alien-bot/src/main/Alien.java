@@ -16,7 +16,7 @@ public class Alien {
 	private boolean hasHumName = false;
 	private int sentiment = -1;
 	private String response = "";
-
+	private int badResponse = 0;
 	Random rand = new Random();
 
 	// A hashmap is used for quick lookup of phrases and keywords
@@ -33,8 +33,8 @@ public class Alien {
 	 */
 	public void setPhrases() {
 		String[] planets = {"I come from Mars.",
-				"I come from what you call E131a-3H.",
-				"My home is called Venus."
+				"I come from the best Planet E1K-LL9Z.",
+				"My horrible home is called Venus."
 		};
 		phrases.put("planet", planets);
 		phrases.put("planet?", planets);
@@ -47,9 +47,9 @@ public class Alien {
 		};
 		phrases.put("testphrases", testPhrases);
 
-		String[] food = {"don't require sustinence.",
-				"eat cats, mostly.",
-				"think you look pretty good. *licks mouth-appendage*"
+		String[] food = {"I don't require sustinence.",
+				"I eat cats, mostly. Irritating nasty creatures.",
+				"I think you look pretty good. *licks mouth-appendage*"
 		};
 		phrases.put("food", food);
 		phrases.put("eat", food);
@@ -64,14 +64,14 @@ public class Alien {
 
 		String[] objectives = {"I want to destroy Earth.",
 				"Ask the CIA.",
-				"Just here for a good time, not a long time <3.",
+				"Just here for a pretty good time, not a long time.",
 				"I wish to speak with the lizard people's leader Mark Zuckerberg."
 		};
 		phrases.put("here", objectives);
 
-		String[] well = {"tired. The days are much longer on earth.",
-				"starved. I could use some of what you humans call... food.",
-				"missing my home planet."
+		String[] well = {"I'm tired. These days are like... much longer on Earth.",
+				"Starved! I could use some of what you humans call... food.",
+				"I am doing really well thank you!"
 		};
 		phrases.put("feel", well);
 
@@ -88,8 +88,8 @@ public class Alien {
 		phrases.put("sport", sports);
 
 		String[] appearance = {"I have 6 eyes.",
-				"I have 8 arms.",
-				"I don't have any teeth!"
+				"I have 8 strong, muscular arms.",
+				"Well human, I have disgusting and unbearable rows of sharp teeth that grow in wrong!"
 		};
 		phrases.put("appear", appearance);
 		phrases.put("look", appearance);
@@ -98,7 +98,7 @@ public class Alien {
 				"Goodbye earthling.",
 				"Goodbye, all information from this conversation will be erased from your memory."
 		};
-		phrases.put("goodby", exit);
+		phrases.put("goodbye", exit);
 		phrases.put("bye", exit);
 
 		String[] earth = { "It is dull and everything is bland, I hate it here",
@@ -114,7 +114,30 @@ public class Alien {
 		phrases.put("understand", language);
 		phrases.put("english", language);
 
+		//New topic 
+		String[] animals = {"We do not have animals on my home planet. They were a bother so we exterminated them.",
+				"I fear animals far more than I fear humans. I think they are all interesting.",
+				"Animals are so cute !!!! and delish"
+		};
+		
+		phrases.put("anim", animals);
 
+		//New topic #2
+		String[] home = {"I still have unfinished buisness. I cannot leave unless I take Trump with me",
+				"I will not leave until I try PIZZA. You humans never stop talking about it. I must know."
+		};
+		
+		phrases.put("home", home);
+		phrases.put("back home", home);
+		
+		//New topic #3
+		String[] trump = {"*Alien Noises* Do you know of my plan? Where might I find him?"
+				
+		};
+		
+		phrases.put("trump", trump);
+		phrases.put("donald", trump);
+		
 		//This returns a set of keywords to prompt the user on what words to ask the alien
 		String[] keyWords = { "planet", 
 				"food",
@@ -129,7 +152,7 @@ public class Alien {
 				"English",
 				"politics",
 				"society",
-				"testPhrases"
+				"animals"
 		};
 		phrases.put("help", keyWords);	
 	}
@@ -144,20 +167,27 @@ public class Alien {
 		 * Name is last word of input after greeting
 		 */
 		String handler = input.toLowerCase();
+		String answer = "";
 		if(!hasHumName) {
 			if(handler.contentEquals("hello") || handler.contentEquals("hi")) {
-				return "Hello Human, what is your name?";
+				answer = "Hello cute human flesh, what is your name?";
+				this.response = answer;
+				return answer;
 			}
 			else {
 				//Keep capitalization
 				String[] parse = input.split(" ");
 				setHumanName(parse[parse.length-1]);
-				return "It is lovely to meet you, " + humanName;
+				answer ="It is lovely to meet you, " + humanName;
+				this.response = answer;
+				return answer;
 			}
 		}
 		if(!askedName && ( handler.contains("name?") || handler.contains("name"))) {
 			wasAskedName();
-			return "My name is " + name;
+			answer = "My name is " + name;
+			this.response = answer;
+			return answer;
 		}
 		// Go to various phrases
 		else
@@ -170,8 +200,6 @@ public class Alien {
 	 */
 	public String getPhrases(String input){
 		Stemmer stemmer = new Stemmer();
-
-		String ans = "What are you talking about earthling? Maybe you should ask for help.";
 
 		// Search for phrases in the user input
 		for(String s: input.split(" ")) {
@@ -193,10 +221,43 @@ public class Alien {
 
 				// If not help and a matching key phrase, return first possible response
 				else {
-					return phrases.get(s)[rand.nextInt(phrases.get(s).length)];
+					String ans = phrases.get(s)[rand.nextInt(phrases.get(s).length)];
+					this.response = ans;
+					return ans;
 				}
 			}
 
+		}
+		return badInput();
+	}
+	
+	public String badInput()
+	{
+		String ans = "";
+		switch(badResponse) {
+		case 0:
+			badResponse++;
+			ans = "You're funny!";
+			break;
+		case 1:
+			ans = "I dont think understand you! Ask for help?";
+			badResponse++;
+			break;
+		case 2:
+			ans = "Try to speak my language";
+			badResponse++;
+			break;
+		case 3:
+			ans = "You're boring.";
+			badResponse++;
+			break;
+		case 4:
+			ans = "I WILL ANNIHILATE YOUR ABOMINATION OF A PLANET!";
+			badResponse++;
+			break;
+		default:
+			ans = "I WILL DEVOUR YOU. YOU ARE A WORM UPON THIS UNIVERSE. FACE MY WRATH";
+			break;
 		}
 		this.response = ans;
 		return ans;
@@ -204,11 +265,17 @@ public class Alien {
 
 	// Helper methods
 	public String getName() {
-		return name;
+		if(askedName) {
+			return name;
+		}
+		else {
+			return "Alien";
+		}
+		
 	}
 
 	public String getHumanName() {
-		return "humanName";
+		return humanName;
 	}
 
 	public void setHumanName(String name) {
@@ -226,6 +293,7 @@ public class Alien {
 
 	public int getSentiment()
 	{
+		System.out.println(response);
 		sentiment = SentimentAnalyzer.getSentiment(response);
 		return sentiment;
 	}
