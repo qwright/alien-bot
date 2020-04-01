@@ -33,8 +33,8 @@ public class Alien {
 	 */
 	public void setPhrases() {
 		String[] planets = {"I come from Mars.",
-				"I come from what you call E131a-3H.",
-				"My home is called Venus."
+				"I come from the best Planet E1K-LL9Z.",
+				"My horrible home is called Venus."
 		};
 		phrases.put("planet", planets);
 		phrases.put("planet?", planets);
@@ -47,9 +47,9 @@ public class Alien {
 		};
 		phrases.put("testphrases", testPhrases);
 
-		String[] food = {"don't require sustinence.",
-				"eat cats, mostly.",
-				"think you look pretty good. *licks mouth-appendage*"
+		String[] food = {"I don't require sustinence.",
+				"I eat cats, mostly. Irritating nasty creatures.",
+				"I think you look pretty good. *licks mouth-appendage*"
 		};
 		phrases.put("food", food);
 		phrases.put("eat", food);
@@ -64,14 +64,14 @@ public class Alien {
 
 		String[] objectives = {"I want to destroy Earth.",
 				"Ask the CIA.",
-				"Just here for a good time, not a long time <3.",
+				"Just here for a pretty good time, not a long time.",
 				"I wish to speak with the lizard people's leader Mark Zuckerberg."
 		};
 		phrases.put("here", objectives);
 
-		String[] well = {"tired. The days are much longer on earth.",
-				"starved. I could use some of what you humans call... food.",
-				"missing my home planet."
+		String[] well = {"I'm tired. These days are like... much longer on Earth.",
+				"Starved! I could use some of what you humans call... food.",
+				"I am doing really well thank you!"
 		};
 		phrases.put("feel", well);
 
@@ -88,8 +88,8 @@ public class Alien {
 		phrases.put("sport", sports);
 
 		String[] appearance = {"I have 6 eyes.",
-				"I have 8 arms.",
-				"I don't have any teeth!"
+				"I have 8 strong, muscular arms.",
+				"Well human, I have disgusting and unbearable rows of sharp teeth that grow in wrong!"
 		};
 		phrases.put("appear", appearance);
 		phrases.put("look", appearance);
@@ -116,10 +116,11 @@ public class Alien {
 
 		//New topic 
 		String[] animals = {"We do not have animals on my home planet. They were a bother so we exterminated them.",
-				"I fear animals far more than I fear humans. I think they are all interesting."
+				"I fear animals far more than I fear humans. I think they are all interesting.",
+				"Animals are so cute !!!! and delish"
 		};
 		
-		phrases.put("animal", animals);
+		phrases.put("anim", animals);
 
 		//New topic #2
 		String[] home = {"I still have unfinished buisness. I cannot leave unless I take Trump with me",
