@@ -18,16 +18,16 @@ public class POSTagging extends Chatroom {
 			if(s[s.length-1].equals(presentTense)&& al.parse(input)!= help)
 			{
 				String[] t = RiTa.getPosTags(al.parse(input));
-				labelList.add(new Label(alias + ": " + "I am " + corrections(input)));
+				labelList.add(new Label(al.getName() + ": " + "I am " + corrections(input)));
 			}
 			else if(s[s.length-1].equals(singularPresent) && al.parse(input)!= help)
 			{
 				String[] t = RiTa.getPosTags(al.parse(input));
-				labelList.add(new Label(alias + ": " + "I " + corrections(input)));
+				labelList.add(new Label(al.getName() + ": " + "I " + corrections(input)));
 			}
 			else
 			{
-				labelList.add(new Label(alias + ": " + al.parse(input)));
+				labelList.add(new Label(al.getName() + ": " + al.parse(input)));
 			}
 	}
 	

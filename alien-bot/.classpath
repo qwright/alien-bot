@@ -17,5 +17,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/Paige/Downloads/slf4j-simple-1.7.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Paige/Downloads/rita.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

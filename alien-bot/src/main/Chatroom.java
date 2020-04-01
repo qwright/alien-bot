@@ -43,7 +43,7 @@ public class Chatroom extends Application {
 	TextField input;
 	protected static Alien al;
 	protected static String alias;
-	private String humanName;
+	//private String humanName;
 	static int clicked;
 	RowConstraints textRow;
 	Label current;
@@ -67,7 +67,7 @@ public class Chatroom extends Application {
 		// Initialize alien
 		al = new Alien("ET");
 		alias = al.getNameState() ? al.getName() : "Alien";
-		humanName = al.getNameState() ? al.getHumanName() : "Human";
+		//humanName = al.getNameState() ? al.getHumanName() : "Human";
 		//root holds scrollpane and hbox textarea
 		root = new VBox();
 		window = primaryStage;
@@ -172,7 +172,7 @@ public class Chatroom extends Application {
 
 	public void setLabels(String in)
 	{
-		labelList.add(new Label(humanName + ": " + in));
+		labelList.add(new Label(al.getHumanName() + ": " + in));
 		//Prints out message and corrects verbs when needed
 		POSTagging.verb(in);
 	}
