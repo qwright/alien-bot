@@ -11,19 +11,29 @@ public class POSTagging extends Chatroom {
 	 //Searches for verb tense and conjugates "be" accordingly or just adds I.
 	public static void verb(String input)
 	{
-		String help = "What are you talking about earthling? Maybe you should ask for help.";
 		String presentTense = "vbg";
 		String singularPresent = "vbp";
+		String pastTense = "vbn";
 		String[] s = RiTa.getPosTags(input.replaceAll("[^A-Za-z ]+",""));
-			if(s[s.length-1].equals(presentTense)&& al.parse(input)!= help)
+			if(s[s.length-1].equals(presentTense))
 			{
 				String[] t = RiTa.getPosTags(al.parse(input));
-				labelList.add(new Label(al.getName() + ": " + "I am " + corrections(input)));
+				if(t[0].equals("nn"))
+					labelList.add(new Label(alias + ": " + "I " + corrections(input)));
+				else
+					labelList.add(new Label(alias + ": " + "I am " + corrections(input)));
 			}
-			else if(s[s.length-1].equals(singularPresent) && al.parse(input)!= help)
+			else if(s[s.length-1].equals(singularPresent))
 			{
 				String[] t = RiTa.getPosTags(al.parse(input));
 				labelList.add(new Label(al.getName() + ": " + "I " + corrections(input)));
+			}else if(s[s.length-1].equals(pastTense))
+			{
+				String[]t = RiTa.getPosTags(al.parse(input));
+				if(t[0].equals("nn"))
+					labelList.add(new Label(alias + ": " + "I " + corrections(input)));
+				else
+					labelList.add(new Label(al.getName() + ": " + "I have been " + corrections(input)));
 			}
 			else
 			{
@@ -36,15 +46,16 @@ public class POSTagging extends Chatroom {
 	{
 		String myString = al.parse(input);
 		String arr[] = myString.split(" ", 2);
-		String correction = arr[0];
-		String theRest = arr[1];
 		String[] t = RiTa.getPosTags(al.parse(input));
 		String[] s = RiTa.getPosTags(input.replaceAll("[^A-Za-z ]+",""));
 		
 		if(s[s.length-1].equals("vbg") && t[0].equals("vb")
 				||s[s.length-1].equals("vbg") && t[0].equals("vbp")
-				||s[s.length-1].equals("vbg") && t[0].equals("nn"))
+				||s[s.length-1].equals("vbn") && t[0].equals("vb")
+				||s[s.length-1].equals("vbn") && t[0].equals("vbp"))
 		{
+			String correction = arr[0];
+			String theRest = arr[1];
 			correction = arr[0].concat("ing ");
 			myString = correction + theRest;
 		}
