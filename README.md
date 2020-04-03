@@ -43,25 +43,25 @@ Quinn Wright
 
 The chat-bot uses a beautiful and easy on the eyes graphical interface made with JavaFX for the user to interact with. As well as a dynamic alien to give visual feedback!
 
-![alt text](https://github.com/qwright/alien-bot/readme_res/gui_example.jpg)
+![alt text](https://github.com/qwright/alien-bot/blob/master/readme_res/gui_example.jpg)
 
 **Sentiment Analysis**
 
 Utilizing Stanford CoreNLP APIs, this chat-bot reads from a set of pre-programmed conversational phrases and gets an evaluation of attitude from a scale of 0-4. In this case, the alien class is given a mood every response which triggers a corresponding image in the GUI for a more visceral experience.
 
-![alt text](https://github.com/qwright/alien-bot/readme_res/sentiment_frames.jpg)
+![alt text](https://github.com/qwright/alien-bot/blob/master/readme_res/sentiment_frames.jpg)
 
 **POSTagging**
 
 RiTa library allows part-of-speech (POS) tagging for grammatical accuracy in the response given by the Alien. This implementation focused on sentence tense.
 
-![alt text](https://github.com/qwright/alien-bot/readme_res/pos_example.png)
+![alt text](https://github.com/qwright/alien-bot/blob/master/readme_res/pos_example.png)
 
 **Stemmer**
 
 The word-stemmer is used in this project to more easily implement pattern matching from a very wide range of possible sentence structures. i.e. The alien can pick out keywords easily to give better responses than a null entry.
 
-![alt text](https://github.com/qwright/alien-bot/readme_res/stemmer_example.jpg)
+![alt text](https://github.com/qwright/alien-bot/blob/master/readme_res/stemmer_example.jpg)
 
 
 
