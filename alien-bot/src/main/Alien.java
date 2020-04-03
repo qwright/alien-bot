@@ -47,12 +47,13 @@ public class Alien {
 		};
 		phrases.put("testphrases", testPhrases);
 
-		String[] food = {"I don't require sustinence.",
-				"I eat cats, mostly. Irritating nasty creatures.",
-				"I think you look pretty good. *licks mouth-appendage*"
+		String[] food = {"don't require sustinence.",
+				"eat cats, mostly. Irritating nasty creatures.",
+				"think you look pretty good. *licks mouth-appendage*"
 		};
 		phrases.put("food", food);
 		phrases.put("eat", food);
+		phrases.put("eaten", food);
 
 		String[] drink = {"drink only water - 8 glasses a day!"};
 		phrases.put("drink", drink);
@@ -69,9 +70,9 @@ public class Alien {
 		};
 		phrases.put("here", objectives);
 
-		String[] well = {"I'm tired. These days are like... much longer on Earth.",
-				"Starved! I could use some of what you humans call... food.",
-				"I am doing really well thank you!"
+		String[] well = {"tired. These days are like... much longer on Earth.",
+				"starved! I could use some of what you humans call... food.",
+				"doing really well thank you!"
 		};
 		phrases.put("feel", well);
 
