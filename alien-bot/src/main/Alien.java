@@ -37,8 +37,8 @@ public class Alien {
 				"My horrible home is called Venus."
 		};
 		phrases.put("planet", planets);
-		phrases.put("planet?", planets);
-		phrases.put("from?", planets);
+		//phrases.put("planet", planets);
+		phrases.put("from", planets);
 
 		String[] testPhrases = {"UFO sounds intensifies.",
 				"Abducting human.",
@@ -53,6 +53,7 @@ public class Alien {
 		};
 		phrases.put("food", food);
 		phrases.put("eat", food);
+		
 
 		String[] drink = {"drink only water - 8 glasses a day!"};
 		phrases.put("drink", drink);
@@ -82,7 +83,7 @@ public class Alien {
 		phrases.put("spaceship", spaceship);
 		phrases.put("ufo", spaceship);
 
-		String[] sports = {"I am not familiar with earthling sports. In my home planet we lift asteroids with our mouth appendages.",
+		String[] sports = {"In my home planet we lift asteroids with our mouth appendages.",
 				"I am interested in the one you call 'croquet'."	
 		};
 		phrases.put("sport", sports);
