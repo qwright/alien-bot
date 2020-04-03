@@ -15,7 +15,6 @@ public class POSTagging extends Chatroom {
 		String singularPresent = "vbp";
 		String pastTense = "vbn";
 		String[] s = RiTa.getPosTags(input.replaceAll("[^A-Za-z ]+",""));
-		System.out.println(java.util.Arrays.asList(s));
 			if(s[s.length-1].equals(presentTense))
 			{
 				String[] t = RiTa.getPosTags(al.parse(input));
@@ -47,9 +46,7 @@ public class POSTagging extends Chatroom {
 	{
 		String myString = al.parse(input);
 		String arr[] = myString.split(" ", 2);
-		
 		String[] t = RiTa.getPosTags(al.parse(input));
-		System.out.println(java.util.Arrays.asList(t));
 		String[] s = RiTa.getPosTags(input.replaceAll("[^A-Za-z ]+",""));
 		
 		if(s[s.length-1].equals("vbg") && t[0].equals("vb")
