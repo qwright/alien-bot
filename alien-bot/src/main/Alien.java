@@ -138,6 +138,24 @@ public class Alien {
 		
 		phrases.put("trump", trump);
 		phrases.put("donald", trump);
+		//New topic #4
+		String[] job = {"go to work at Mcdonalds, ba da ba ba ba 'I'm Lovin'It!'",
+			"act on the hit tv show 'Westworld'",
+			"report to the Apple store, human."
+		};
+		phrases.put("work",job);
+		
+		//New topic #5
+		String[] tv = {"watch Game of Thrones, the last season sucks",
+				"watch Parks and Recreation. #Treatyoself"
+		};
+		phrases.put("watch",tv);
+		
+		//New topic #6
+		String[] books = {"read Margaret Atwoods' 'The Handmaid's Tale'",
+				"read the Game of Thrones series, WINTER IS COMING *Alien noises*"	
+		};
+		phrases.put("read",books);
 		
 		//This returns a set of keywords to prompt the user on what words to ask the alien
 		String[] keyWords = { "planet", 
