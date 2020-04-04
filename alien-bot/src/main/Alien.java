@@ -171,7 +171,10 @@ public class Alien {
 				"English",
 				"politics",
 				"society",
-				"animals"
+				"animals",
+				"read",
+				"watch",
+				"work"
 		};
 		phrases.put("help", keyWords);	
 	}
