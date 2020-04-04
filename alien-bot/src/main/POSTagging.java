@@ -14,6 +14,7 @@ public class POSTagging extends Chatroom {
 		String presentTense = "vbg";
 		String singularPresent = "vbp";
 		String pastTense = "vbn";
+		String past = "vbd";
 		String[] s = RiTa.getPosTags(input.replaceAll("[^A-Za-z ]+",""));
 			if(s[s.length-1].equals(presentTense))
 			{
@@ -34,6 +35,10 @@ public class POSTagging extends Chatroom {
 					labelList.add(new Label(alias + ": " + "I " + corrections(input)));
 				else
 					labelList.add(new Label(al.getName() + ": " + "I have been " + corrections(input)));
+			}else if(s[s.length-1].equals(past))
+			{
+				String[]t = RiTa.getPosTags(al.parse(input));
+				labelList.add(new Label(alias + ": " + "I " + corrections(input)));
 			}
 			else
 			{
@@ -46,6 +51,8 @@ public class POSTagging extends Chatroom {
 	{
 		String myString = al.parse(input);
 		String arr[] = myString.split(" ", 2);
+		String correction = arr[0];
+		String theRest = arr[1];
 		String[] t = RiTa.getPosTags(al.parse(input));
 		String[] s = RiTa.getPosTags(input.replaceAll("[^A-Za-z ]+",""));
 		
@@ -54,14 +61,17 @@ public class POSTagging extends Chatroom {
 				||s[s.length-1].equals("vbn") && t[0].equals("vb")
 				||s[s.length-1].equals("vbn") && t[0].equals("vbp"))
 		{
-			String correction = arr[0];
-			String theRest = arr[1];
 			correction = arr[0].concat("ing ");
 			myString = correction + theRest;
 		}
 		if(s[s.length-1].equals("vbp") && t[0].equals("vbn"))
 		{
 			myString = "am " + myString;
+		}
+		if(s[s.length-1].equals("vbd")&& t[0].contentEquals("vb"))
+		{
+			correction = arr[0].concat("ed ");
+			myString = correction + theRest;
 		}
 		return myString;
 	}
